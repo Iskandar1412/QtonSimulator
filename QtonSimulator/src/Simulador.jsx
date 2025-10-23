@@ -316,7 +316,7 @@ const QuantumSimulator = () => {
 
 		for (let iter = 0; iter < iterations && !cancelRef.current; iter++) {
 			while (pausedRef.current && !cancelRef.current) {
-				await sleep(100);
+				await sleep(50); // 100
 			}
 
 			addQuantumLog(`   - ===== Iteración ${iter + 1}/${iterations} =====`, 'operation');
@@ -331,7 +331,7 @@ const QuantumSimulator = () => {
 			// Cambio de amplitud
 			const probAfterOracle = quantumState.getProbabilities()[target].probability;
 			addQuantumLog(`         └─ Probabilidad de |${target}⟩: ${(probAfterOracle * 100).toFixed(2)}%`);
-			await sleep(250 / simulationSpeed); // 600
+			await sleep(150 / simulationSpeed); // 600
 
 			// Difusión: Amplificar amplitud del objetivo
 			addQuantumLog(`      └─ °  Aplicando Diffusion Operator`);
@@ -351,7 +351,7 @@ const QuantumSimulator = () => {
 			addQuantumLog(`         └─ Probabilidad de |${target}⟩: ${(probAfterDiff * 100).toFixed(2)}%`);
 
 			setQuantumProgress(((iter + 1) / iterations) * 100);
-			await sleep(350 / simulationSpeed); // 900
+			await sleep(200 / simulationSpeed); // 900
 		}
 
 		// -------------- Medición
@@ -472,7 +472,7 @@ const QuantumSimulator = () => {
 		addQuantumLog(`-   Iniciando Algoritmo de Shor`, 'operation');
 		addQuantumLog(`    Factorizando N = ${N}`);
 		addQuantumLog(`    Usando ${qubits} qubits para el cálculo cuántico`);
-		await sleep(500 / simulationSpeed);
+		await sleep(100 / simulationSpeed); // 500
 
 		// ----------- Paso 1
 		addQuantumLog(`    PASO 1: Seleccionar base 'a' coprimo con N`, 'operation');
@@ -483,7 +483,7 @@ const QuantumSimulator = () => {
 		addQuantumLog(`   └─ Probando a = ${a}`);
 		addQuantumLog(`   └─ Verificando: gcd(${a}, ${N}) = ${gcd(a, N)}`);
 		addQuantumLog(`   └─ ✓ Seleccionado a = ${a} (coprimo con ${N})`);
-		await sleep(600 / simulationSpeed);
+		await sleep(200 / simulationSpeed); // 600
 
 		// ----------- Paso 2
 		addQuantumLog(`   PASO 2: Crear superposición cuántica`, 'operation');
@@ -506,7 +506,7 @@ const QuantumSimulator = () => {
 			addQuantumLog(`      └─ ✓ Ejecución perfecta (condiciones ideales)`);
 		}
 		setQuantumProgress(25);
-		await sleep(900 / simulationSpeed);
+		await sleep(300 / simulationSpeed); // 900
 
 		// ----------- Paso 3
 		addQuantumLog(`   PASO 3: Exponenciación Modular Cuántica`, 'operation');
@@ -533,7 +533,7 @@ const QuantumSimulator = () => {
 		// Simular aplicación de compuertas de QFT
 		for (let i = 0; i < qubits; i++) {
 			addQuantumLog(`      └─ Procesando qubit ${i + 1}/${qubits}: Rotaciones de fase`);
-			await sleep(400 / simulationSpeed);
+			await sleep(100 / simulationSpeed); // 400
 		}
 
 		operations.qft += qubits * qubits;
@@ -565,7 +565,7 @@ const QuantumSimulator = () => {
 		operations.measurement = 1;
 		operations.total++;
 		setQuantumProgress(90);
-		await sleep(700 / simulationSpeed);
+		await sleep(150 / simulationSpeed); // 700
 
 		// ----------- Paso 6
 		addQuantumLog(`   PASO 6: Cálculo Clásico de Factores`, 'operation');
@@ -632,7 +632,7 @@ const QuantumSimulator = () => {
 
 		for (let i = 2; i <= limit && !cancelRef.current; i++) {
 			while (pausedRef.current && !cancelRef.current) {
-				await sleep(100);
+				await sleep(300); // 100
 			}
 
 			operations.divisions++;
@@ -643,7 +643,7 @@ const QuantumSimulator = () => {
 				const remainder = N % i;
 				addClassicalLog(`-  i=${i}: ¿${N} % ${i} == 0? → ${N} % ${i} = ${remainder} ${remainder === 0 ? '✓ SÍ' : '✗ NO'}`);
 				setClassicalProgress((i / limit) * 100);
-				await sleep(250 / simulationSpeed);
+				await sleep(600 / simulationSpeed); // 250
 			}
 
 			if (N % i === 0) {
