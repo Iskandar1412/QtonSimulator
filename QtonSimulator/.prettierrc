@@ -1,0 +1,12 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 200,
+	"overrides": [
+		{
+			"files": "*.jsx",
+			"options": {}
+		}
+	]
+}

@@ -1,0 +1,14 @@
+# Package Managers
+package-lock.json
+*.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+*.css
+*.md
+*.eslint.js
+*.config.js
+.prettierrc
+# Miscellaneous
+/static/
